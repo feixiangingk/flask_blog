@@ -6,7 +6,8 @@
 from __future__ import unicode_literals
 from flask_script import Manager,Server
 from __init__ import create_app,app
-
+from ext import db
+from models import User,Post
 # app=create_app()
 manager=Manager(app)
 
@@ -19,7 +20,7 @@ def make_shell_context():
     后期还可以将db 等传进来
     :return:
     '''
-    return dict(app=create_app())
+    return dict(app=create_app(),db=db,User=User,Post=Post)
 
 if __name__ == '__main__':
     manager.run()

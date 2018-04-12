@@ -20,3 +20,4 @@ class DevConfig(object):
     DATABASE_NAME='test'
     SQLALCHEMY_DATABASE_URI='mysql://' + DATABASE_USER + ':' + DATABASE_PWD + '@' + \
                           DATABASE_HOST + ':' + str(DATABASE_PORT) + '/' + DATABASE_NAME + '?charset=utf8'
+    SQLALCHEMY_TRACK_MODIFICATIONS=True
