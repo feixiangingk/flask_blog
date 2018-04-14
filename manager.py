@@ -5,12 +5,18 @@
 # anthor:      ZT@gufan
 from __future__ import unicode_literals
 from flask_script import Manager,Server
-from __init__ import create_app,app
-from ext import db
-from models import User,Post
-# app=create_app()
+
+from flask_migrate import MigrateCommand,Migrate
+
+from app import create_app,db
+from app.models import User,Post,Tag,Comment
+
+migrate=Migrate()
+app=create_app()
 manager=Manager(app)
 
+migrate.init_app(app,db)
+manager.add_command("db",MigrateCommand)
 manager.add_command("server",Server('0.0.0.0',port=9000))
 
 @manager.shell
@@ -20,7 +26,7 @@ def make_shell_context():
     后期还可以将db 等传进来
     :return:
     '''
-    return dict(app=create_app(),db=db,User=User,Post=Post)
+    return dict(app=app,db=db,User=User,Post=Post,Tag=Tag,Comment=Comment)
 
 if __name__ == '__main__':
     manager.run()

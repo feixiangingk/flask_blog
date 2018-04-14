@@ -5,7 +5,7 @@
 # anthor:      ZT@gufan
 
 
-from __future__ import unicode_literals
+# from __future__ import unicode_literals
 import os
 BASE_DIR=os.path.dirname(os.path.abspath(__file__))
 class Config(object):
@@ -17,7 +17,7 @@ class DevConfig(object):
     DATABASE_PWD="123456"
     DATABASE_HOST='127.0.0.1'
     DATABASE_PORT=3306
-    DATABASE_NAME='test'
+    DATABASE_NAME='flask_blog'
     SQLALCHEMY_DATABASE_URI='mysql://' + DATABASE_USER + ':' + DATABASE_PWD + '@' + \
                           DATABASE_HOST + ':' + str(DATABASE_PORT) + '/' + DATABASE_NAME + '?charset=utf8'
     SQLALCHEMY_TRACK_MODIFICATIONS=True
